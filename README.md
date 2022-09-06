@@ -2,8 +2,13 @@
 
 Este sistema esta creado con [Create React App](https://github.com/saulfranco14/c_a_project).
 
-En el directorio del proyecto(terminal), debes arrancarlo con:
+### Url del proyecto
+https://ca-system.netlify.app/
 
+### Url de la API REST del Proyecto
+https://api-exam-tic.herokuapp.com/
+
+En el directorio del proyecto(terminal), debes arrancarlo con:
 ### `npm start`
 
 Modo de desarrollo abrirá el puerto.\
