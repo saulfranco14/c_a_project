@@ -1,24 +1,24 @@
 import React, {useState}    from 'react';
 import Box                  from '@mui/material/Box';
-import TextField            from '@mui/material/TextField';
 import Button               from '@mui/material/Button';
 import { SweetAlertBasic }  from '../../utils/sweet_alert';
-import { WrapperLogin }     from './login.styles'
+import { WrapperLogin }     from './login.styles';
+import { DataLogin }        from './data_login';
+import Input                from '../Inputs/Input';
+import { useSelector }      from 'react-redux'
 
 const Index = () => {
 
-    const [ correo, setCorreo ]         = useState('');
-    const [ password, setPaswword ]     = useState('');
+    const [ newInput, setNewInput ]         = useState(DataLogin)
+    const { name_login, password_login }    = useSelector( state => state?.login || {})
 
     const loginUserForm = e => {
         e.preventDefault();
-        //Validate form
-        if( correo.trim() === '' || password.trim() === '' ){
+        if(name_login.trim() === '' || password_login.trim() === '' ){
             SweetAlertBasic("error","Ups","Todos los datos son obligatorios");
             return;
         }
     }
-
 
     return (
         <>
@@ -35,24 +35,18 @@ const Index = () => {
                             autoComplete="off"
                             onSubmit={loginUserForm}
                         >
-                            <TextField
-                                id          ="outlined-basic"
-                                label       ="Ingrese su correo"
-                                variant     ="outlined"
-                                className   ='input-form-login'
-                                value       ={correo}
-                                onChange    ={ e => setCorreo(e.target.value) }
-                            />
-                            <TextField
-                                id          ="outlined-basic"
-                                label       ="Ingrese su contraseña"
-                                variant     ="outlined"
-                                className   ='input-form-login'
-                                value       ={password}
-                                type        ="password"
-                                autoComplete="off"
-                                onChange    ={ e => setPaswword(e.target.value) }
-                            />
+                            {
+                                DataLogin.map( (data, index) =>(
+                                    <div key={index}>
+                                        <Input
+                                            dataLogin   = {data}
+                                            index       = {index}
+                                            newInput    = {newInput}
+                                            setNewInput = {setNewInput}
+                                        />
+                                    </div>
+                                ) )
+                            }
                             <Button
                                 type="submit"
                                 variant="contained"

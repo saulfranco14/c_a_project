@@ -32,6 +32,7 @@ export const WrapperLogin = styled.section`
     .input-form-login{
         margin-top: 15px;
         margin-bottom: 15px;
+        width: 100%;
     }
     .box-form{
         display: flex;
