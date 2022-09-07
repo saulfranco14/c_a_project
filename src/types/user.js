@@ -11,3 +11,4 @@ export const USER_DELETE_INIT       = 'USER_DELETE_INIT';
 export const USER_DELETE_ERROR      = 'USER_DELETE_ERROR';
 export const USER_DELETE_SUCCESS    = 'USER_DELETE_SUCCESS';
 export const USER_ID_SUCCESS        = 'USER_ID_SUCCESS';
+export const USER_INIT_CHANGE        = 'USER_INIT_CHANGE';

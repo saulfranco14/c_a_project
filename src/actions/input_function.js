@@ -1,5 +1,6 @@
 import {
-    INPUT_DATA
+    INPUT_DATA,
+    INPUT_INIT
 } from '../types/input';
 
 export const inputData = ( { name_input, value_input } ) => ({
@@ -7,3 +8,5 @@ export const inputData = ( { name_input, value_input } ) => ({
     name_input,
     value_input
 })
+
+export const inputInit = ( ) => ( { type: INPUT_INIT })

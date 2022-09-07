@@ -9,6 +9,9 @@ import {
     user_alls,
     user_init
 }   from '../../actions/user_action';
+import{
+    input_init
+} from '../../actions/input_action';
 
 const Index = () => {
 
@@ -16,9 +19,11 @@ const Index = () => {
     const dispatch          = useDispatch();
     const loading_users     = () => dispatch( user_alls() );
     const init              = () => dispatch( user_init() );
+    const init_input        = () => dispatch( input_init() );
 
     const  newUser =  () => {
         init();
+        init_input();
         navigate('/new_user');
     }
 
@@ -49,7 +54,7 @@ const Index = () => {
                     columns             ={ColumnsUser}
                     pageSize            ={12}
                     rowsPerPageOptions  ={[12]}
-                    getRowId            ={users => parseInt(users.id_user)}
+                    getRowId            ={users => users.id_user}
                 />
             </section>
         </WrapperUser>

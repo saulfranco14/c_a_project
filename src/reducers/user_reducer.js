@@ -11,13 +11,15 @@ import {
     USER_DELETE_INIT,
     USER_DELETE_ERROR,
     USER_DELETE_SUCCESS,
-    USER_ID_SUCCESS
+    USER_ID_SUCCESS,
+    USER_INIT_CHANGE
 } from '../types/user';
 
 const initial_state = {
     users:[],
     loading: false,
     flag: false,
+    reload: false,
     errror: false,
     data_error: null,
     create_user: null,
@@ -33,8 +35,12 @@ export default function init ( state = initial_state, action){
         case USER_DELETE_INIT:
             return{
                 ...state,
-                loading: true,
-                flag: true
+                loading: false,
+                flag: false,
+                reload: false,
+                create_user: null,
+                edit_user : null,
+                delete_user: null
             }
         case USER_ERROR:
         case USER_LOAD_ERROR:
@@ -47,12 +53,20 @@ export default function init ( state = initial_state, action){
                 error: true,
                 data_error: action.payload
             }
+
+        case USER_INIT_CHANGE :
+            return{
+                ...state,
+                loading: true,
+                flag: true,
+                reload: false,
+            }
         case USER_SUCCESS:
             return{
                 ...state,
-                users: [ ...state.users, action.payload],
                 loading: false,
                 flag: false,
+                reload: true,
                 create_user: action.payload,
             }
         case USER_LOAD_SUCCESS:

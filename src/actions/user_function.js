@@ -11,13 +11,16 @@ import {
     USER_DELETE_INIT,
     USER_DELETE_ERROR,
     USER_DELETE_SUCCESS,
-    USER_ID_SUCCESS
+    USER_ID_SUCCESS,
+    USER_INIT_CHANGE
 } from '../types/user';
 
-export const userInit       = (  ) => ( { type: USER_INIT } )
-export const userLoadInit   = (  ) => ( { type: USER_LOAD_INIT } )
-export const userUpdateInit = (  ) => ( { type: USER_UPDATE_INIT } )
-export const userDeleteInit = (  ) => ( { type: USER_DELETE_INIT } )
+export const userInit       = ()  => ( { type: USER_INIT } )
+export const userLoadInit   = ()  => ( { type: USER_LOAD_INIT } )
+export const userUpdateInit = ()  => ( { type: USER_UPDATE_INIT } )
+export const userDeleteInit = ()  => ( { type: USER_DELETE_INIT } )
+export const userChange     = ()  => ( { type:USER_INIT_CHANGE } )
+
 
 export const userError = ( error ) => ({
     type:USER_ERROR,

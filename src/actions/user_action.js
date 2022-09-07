@@ -12,7 +12,8 @@ import {
     userUpdateInit,
     userUpdateSuccess,
     userDeleteSuccess,
-    userDeleteError
+    userDeleteError,
+    userChange
 }        from './user_function';
 
 export  function user_init(){
@@ -26,10 +27,11 @@ export  function user_init(){
 }
 export  function user_create(user){
     return async( dispatch ) =>{
-        dispatch( userInit() )
+        dispatch( userChange() )
         try{
             await client_axios.post('/user/create/', user)
             dispatch(createUserSuccess(user));
+            SweetAlertBasic("success","Felicidades!","Se ha registrado correctamente el usuario");
         }catch(error){
             dispatch( userCreateError(error) )
             SweetAlertBasic("error","Ups",`Upps, hubo un error: ${error}`)
@@ -41,7 +43,7 @@ export  function user_alls(){
     return async( dispatch ) =>{
         dispatch( userLoadInit() )
         try{
-            const response = await client_axios.get('/user/')
+            const response = await client_axios.get('/user/');
             dispatch(userLoadsSuccess(response.data.data[0]));
         }catch(error){
             dispatch( userLoadsError(error) )
