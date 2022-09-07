@@ -1,8 +1,7 @@
 import {
     LOGIN_INIT,
     LOGIN_SUCCESS,
-    LOGIN_ERROR,
-    LOGIN_INPUT
+    LOGIN_ERROR
 } from '../types/login';
 
 const initial_state = {
@@ -41,14 +40,6 @@ export default function init ( state = initial_state, action){
                 error: false,
                 token: action.token,
                 login_success: true,
-            }
-        case LOGIN_INPUT:
-            return{
-                ...state,
-                loading: false,
-                flag: false,
-                error: false,
-                [action.name_input]: action.value_input,
             }
         default:
             return state;

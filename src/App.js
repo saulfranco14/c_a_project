@@ -18,9 +18,6 @@ import SideBar        from 'components/Sidebar';
 import User           from './components/Users';
 import NewUser        from 'components/Users/NewUser';
 
-
-
-
 function App() {
   return (
     <Router>

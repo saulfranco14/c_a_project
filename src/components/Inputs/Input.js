@@ -1,14 +1,12 @@
 import React                        from 'react';
-import TextField                    from '@mui/material/TextField';
 import { useDispatch }              from 'react-redux'
-import {
-    login_input
-}                                   from '../../actions/login_action';
+import TextField                    from '@mui/material/TextField';
+import { input_data }               from '../../actions/input_action';
 
 const Inputs = ( props ) => {
 
     const dispatch          = useDispatch();
-    const add_input         = (name_input, value_input) => dispatch( login_input({name_input, value_input}) );
+    const add_input         = (name_input, value_input) => dispatch( input_data({name_input, value_input}) );
 
     const onInput = async (e) =>{
         await add_input(e.target.name,e.target.value);
