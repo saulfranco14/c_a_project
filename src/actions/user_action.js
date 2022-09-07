@@ -88,11 +88,12 @@ export  function user_delete( id_user ){
     return async( dispatch ) =>{
         dispatch( userInit() )
         try{
-            const response = await client_axios.delete(`/user/delete/${id_user}/`)
-            console.log("***** RESPONSE USER DELETE ******");
-            console.log(response);
-            console.log("***** RESPONSE USER DELETE ******");
-            dispatch(userDeleteSuccess(response.data));
+            const response = await client_axios.delete(`/user/${id_user}/`)
+            if( response.data.code === 200 ){
+                SweetAlertBasic("success","Bien!","Se ha eliminado el usuario correctamente");
+                dispatch(userDeleteSuccess(response.data));
+                dispatch( user_alls() );
+            }
         }catch(error){
             dispatch( userDeleteError(error) )
             SweetAlertBasic("error","Ups",`Upps, hubo un error al eliminar el usuario: ${error}`)
