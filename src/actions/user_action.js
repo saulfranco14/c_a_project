@@ -41,11 +41,8 @@ export  function user_alls(){
     return async( dispatch ) =>{
         dispatch( userLoadInit() )
         try{
-            const response = await client_axios.post('/users')
-            console.log("***** RESPONSE USERS ******");
-            console.log(response);
-            console.log("***** RESPONSE USERS ******");
-            dispatch(userLoadsSuccess(response.data));
+            const response = await client_axios.get('/user/')
+            dispatch(userLoadsSuccess(response.data.data[0]));
         }catch(error){
             dispatch( userLoadsError(error) )
             SweetAlertBasic("error","Ups",`Upps, hubo un error al cargar los usuarios: ${error}`)
@@ -61,7 +58,7 @@ export  function user_id( id_user ){
             console.log("***** RESPONSE USER ID ******");
             console.log(response);
             console.log("***** RESPONSE USER ID ******");
-            dispatch(userIdSuccess(response.data));
+            dispatch(userIdSuccess(response.data.data[0]));
         }catch(error){
             dispatch( userError(error) )
             SweetAlertBasic("error","Ups",`Upps, hubo un error al carga el usuario: ${error}`)
@@ -75,9 +72,9 @@ export  function user_update( user ){
         try{
             const response = await client_axios.put(`/user/update/${user.id_user}/`, user)
             console.log("***** RESPONSE USER UPDATE ******");
-            console.log(response);
+            console.log(response.data.data[0]);
             console.log("***** RESPONSE USER UPDATE ******");
-            dispatch(userUpdateSuccess(response.data));
+            dispatch(userUpdateSuccess(response.data.data[0]));
         }catch(error){
             dispatch( userError(error) )
             SweetAlertBasic("error","Ups",`Upps, hubo un error al actualizar el usuario: ${error}`)

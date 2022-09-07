@@ -35,7 +35,7 @@ export const createUserSuccess = ( user ) =>({
     payload: user
 })
 
-export const userLoadSuccess = ( users ) =>({
+export const userLoadsSuccess = ( users ) =>({
     type: USER_LOAD_SUCCESS,
     payload: users
 })

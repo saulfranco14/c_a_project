@@ -7,7 +7,7 @@ let client_axios    = ({})
 console.log("hostname->", url)
 
 client_axios = axios.create({
-    baseURL: "https://api-exam-tic.herokuapp.com/",
+    baseURL: "https://api-exam-tic.herokuapp.com",
     headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"

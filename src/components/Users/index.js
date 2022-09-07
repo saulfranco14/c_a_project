@@ -1,31 +1,33 @@
-import React            from 'react';
-import { useNavigate }  from 'react-router-dom';
-import { WrapperUser }  from './users.styles';
-import { DataGrid }     from '@mui/x-data-grid';
-import Button           from '@mui/material/Button';
-import {ColumnsUser}    from '../../utils/row_data';
-
-
-export const data_user = [
-    {
-        id_user: "6317f5996c00e9cc1fd0834a",
-        name_user: "Saul Mauricio",
-        first_name_user: "Franco",
-        last_name_user: "Rentería",
-        email_user: "fars_9301@hotmail.com",
-        id_rol: 1,
-        password_user: null,
-        active_user: true
-    }
-]
+import React, {useEffect}           from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate }              from 'react-router-dom';
+import { WrapperUser }              from './users.styles';
+import { DataGrid }                 from '@mui/x-data-grid';
+import Button                       from '@mui/material/Button';
+import {ColumnsUser}                from '../../utils/row_data';
+import {
+    user_alls,
+    user_init
+}   from '../../actions/user_action';
 
 const Index = () => {
 
     const navigate          = useNavigate();
+    const dispatch          = useDispatch();
+    const loading_users     = () => dispatch( user_alls() );
+    const init              = () => dispatch( user_init() );
 
-    const  newUser = () => {
+    const  newUser =  () => {
+        init();
         navigate('/new_user');
     }
+
+    useEffect( () => {
+        loading_users();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [] );
+
+    const { users } = useSelector( state => state?.user);
 
     return (
         <WrapperUser>
@@ -34,7 +36,7 @@ const Index = () => {
                 <Button
                     variant="contained"
                     className='button-create'
-                    onClick={newUser}
+                    onClick={()=> newUser()}
                     size="small"
                 >
                     Crear Usuario
@@ -42,11 +44,12 @@ const Index = () => {
             </section>
             <section className='grid-user'>
                 <DataGrid
-                    rows                ={data_user}
+                    id={Math.random()}
+                    rows                ={users}
                     columns             ={ColumnsUser}
                     pageSize            ={12}
                     rowsPerPageOptions  ={[12]}
-                    getRowId            ={data_user => data_user.id_user}
+                    getRowId            ={users => parseInt(users.id_user)}
                 />
             </section>
         </WrapperUser>
