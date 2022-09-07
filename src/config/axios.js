@@ -10,8 +10,7 @@ client_axios = axios.create({
     baseURL: "https://api-exam-tic.herokuapp.com/",
     headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "X-API-Key": "YfrT98cGcv90h5DVVBGDD8oDfdvbWPvcbn3RvGc3pl",
+        "Access-Control-Allow-Origin": "*"
     },
 });
 
