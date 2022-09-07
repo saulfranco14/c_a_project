@@ -1,10 +1,13 @@
-import React from 'react';
+import React        from 'react';
+import { SideBar }  from './sidebar.styles';
 
 const Index = () => {
     return (
-        <>
-            <h1>Sidebar</h1>
-        </>
+        <SideBar>
+            <ul>
+                <li>Usuarios</li>
+            </ul>
+        </SideBar>
     );
 }
 
