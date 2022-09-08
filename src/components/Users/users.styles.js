@@ -59,5 +59,25 @@ export const WrapperNewUser = styled.div`
             background-color: var(--red_primary);
         }
     }
+`
 
+export const WrapperEditUSer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+export const InputData = styled.input`
+    border-radius: 4px;
+    font: inherit;
+    letter-spacing: inherit;
+    box-sizing: content-box;
+    background: none;
+    height: 1.4375em;
+    margin: 0;
+    display: block;
+    min-width: 0;
+    width: 77% !important;
+    -webkit-animation-duration: 10ms;
+    animation-duration: 10ms;
+    padding: 16.5px 14px;
+    border-color: rgba(0, 0, 0, 0.23);
 `

@@ -16,7 +16,8 @@ import SideBar        from 'components/Sidebar';
 
 // User
 import User           from './components/Users';
-import NewUser        from 'components/Users/NewUser';
+import NewUser        from './components/Users/NewUser';
+import EditUser       from './components/Users/EditUser';
 
 function App() {
   return (
@@ -27,8 +28,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Login/>} />
 
-          <Route path='/users' element={<User/>} />
-          <Route path='/new_user' element={<NewUser/>} />
+          <Route path='/users'          element={<User/>} />
+          <Route path='/new_user'       element={<NewUser/>} />
+          <Route path='/user/:id_user'  element={<EditUser/>} />
 
         </Routes>
       </Provider>

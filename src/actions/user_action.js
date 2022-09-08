@@ -56,10 +56,7 @@ export  function user_id( id_user ){
     return async( dispatch ) =>{
         dispatch( userInit() )
         try{
-            const response = await client_axios.post(`/user/${id_user}/`)
-            console.log("***** RESPONSE USER ID ******");
-            console.log(response);
-            console.log("***** RESPONSE USER ID ******");
+            const response = await client_axios.get(`/user/${id_user}/`)
             dispatch(userIdSuccess(response.data.data[0]));
         }catch(error){
             dispatch( userError(error) )
@@ -72,11 +69,11 @@ export  function user_update( user ){
     return async( dispatch ) =>{
         dispatch( userUpdateInit() )
         try{
-            const response = await client_axios.put(`/user/update/${user.id_user}/`, user)
-            console.log("***** RESPONSE USER UPDATE ******");
-            console.log(response.data.data[0]);
-            console.log("***** RESPONSE USER UPDATE ******");
-            dispatch(userUpdateSuccess(response.data.data[0]));
+            const response = await client_axios.put(`/user/${user.id_user}/`, user)
+            if( response.data.code === 200 ){
+                SweetAlertBasic("success","Bien!","Se ha actualizado el usuario correctamente.");
+                dispatch(userUpdateSuccess(response.data));
+            }
         }catch(error){
             dispatch( userError(error) )
             SweetAlertBasic("error","Ups",`Upps, hubo un error al actualizar el usuario: ${error}`)
@@ -90,7 +87,7 @@ export  function user_delete( id_user ){
         try{
             const response = await client_axios.delete(`/user/${id_user}/`)
             if( response.data.code === 200 ){
-                SweetAlertBasic("success","Bien!","Se ha eliminado el usuario correctamente");
+                SweetAlertBasic("success","Bien!","Se ha eliminado el usuario correctamente.");
                 dispatch(userDeleteSuccess(response.data));
                 dispatch( user_alls() );
             }

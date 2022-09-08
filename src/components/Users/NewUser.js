@@ -22,7 +22,7 @@ const NewUser = () => {
         first_name_user,
         last_name_user,
         email_user,
-        passsword_user
+        password_user
 
     }    = useSelector( state => state?.input || {})
 
@@ -38,7 +38,7 @@ const NewUser = () => {
             first_name_user,
             last_name_user,
             email_user,
-            passsword_user,
+            password_user,
             id_rol : 1,
             active_user: true
         }

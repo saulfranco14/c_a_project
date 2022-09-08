@@ -10,6 +10,7 @@ export  const WrapperHeader = styled.div`
     justify-content: flex-start;
     position: fixed;
     justify-content: flex-start;
+    z-index: 2;
     .text_header{
         margin-left: 20px;
         font-weight: bold;

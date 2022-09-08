@@ -83,6 +83,7 @@ export default function init ( state = initial_state, action){
                 loading: false,
                 flag: false,
                 edit_user: action.payload,
+                reload: true,
             }
         case USER_DELETE_SUCCESS:
             return{
