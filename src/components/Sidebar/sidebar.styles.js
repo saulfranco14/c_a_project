@@ -14,6 +14,7 @@ export const SideBar = styled.div`
             list-style: none;
             text-transform:capitalize;
             cursor: pointer;
+            font-weight: bold;
         }
         li:hover{
             border-bottom: 3px solid var(--white_primary);

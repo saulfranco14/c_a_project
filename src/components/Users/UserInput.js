@@ -51,7 +51,7 @@ export const UserInput = [
     },
     {
         id: 6,
-        name_input: 'passsword_user',
+        name_input: 'password_user',
         style_input: 'outlined-basic',
         class_name_input : 'input-form-user',
         variant_input: 'outlined',
