@@ -1,11 +1,19 @@
 import React, { useEffect }                     from 'react';
 import Button                                   from '@mui/material/Button';
 import Box                                      from '@mui/material/Box';
+import FormGroup                                from '@mui/material/FormGroup';
+import FormControlLabel                         from '@mui/material/FormControlLabel';
+import Checkbox                                 from '@mui/material/Checkbox';
+import InputLabel                               from '@mui/material/InputLabel';
 import { useNavigate,Navigate,useParams }       from 'react-router-dom';
 import { useDispatch, useSelector }             from 'react-redux';
 import { WrapperNewRole,InputData }             from './roles.styles';
 import { role_id,role_update }                  from '../../actions/role_action';
-import { input_data }                           from '../../actions/input_action';
+import {
+    input_data,
+    remove_check,
+    add_check
+}                                   from '../../actions/input_action';
 
 const EditRole = () => {
 
@@ -15,6 +23,8 @@ const EditRole = () => {
     const loading_role                  = () => dispatch( role_id(id_role) );
     const update                        = (role)  => dispatch( role_update(role) );
     const add_input                     = (name_input, value_input) => dispatch( input_data({name_input, value_input}) );
+    const add_data                      = (input) => dispatch( add_check(input) )
+    const remove_data                   = (input) => dispatch( remove_check(input) )
     const { edit_role,reload, loading } = useSelector( state => state?.role || {})
     const {
         name_rol,
@@ -47,6 +57,12 @@ const EditRole = () => {
     const onInput = async (e) =>{
         await add_input(e.target.name,e.target.value);
     }
+
+    const click_check = async (input) =>{
+        menu_rol.includes(input) ? await remove_data(input) : await add_data(input)
+    }
+
+    console.log("edit_role?.menu_rol->", edit_role?.menu_rol)
 
     return (
         <WrapperNewRole>
@@ -92,15 +108,36 @@ const EditRole = () => {
                         onChange    ={ e => onInput(e) }
                         defaultValue={edit_role?.url_rol }
                     />
-                    <InputData
-                        placeholder ='Ingresa tu correo eléctronico'
-                        name        ='menu_rol'
-                        className   ='input-form-role'
-                        type        ='text'
-                        autoComplete="off"
-                        onChange    ={ e => onInput(e) }
-                        defaultValue={edit_role?.menu_rol }
-                    />
+                    <FormGroup
+                        className='check-button'
+                    >
+                        <InputLabel id="role-checl">Selecciona que puede ver el rol:</InputLabel>
+                        <FormControlLabel
+                            control={
+                                    ["profile"].includes(edit_role?.menu_rol) ?
+                                        <Checkbox defaultChecked onClick={()=> click_check('profile')}/>
+                                    :
+                                        <Checkbox   onClick={()=> click_check('profile')}/>
+                            }
+                                label="Perfil"
+                        />
+                        <FormControlLabel control={
+                                    ["users"].includes(edit_role?.menu_rol) ?
+                                        <Checkbox defaultChecked onClick={()=> click_check('users')}/>
+                                    :
+                                        <Checkbox   onClick={()=> click_check('users')}/>
+                            } label="Usuario" />
+                        <FormControlLabel
+                            control=
+                                {
+                                    ["roles"].includes(edit_role?.menu_rol) ?
+                                        <Checkbox defaultChecked onClick={()=> click_check('roles')}/>
+                                    :
+                                        <Checkbox   onClick={()=> click_check('roles')}/>
+                                }
+                                label="Roles"
+                        />
+                    </FormGroup>
                     <Button
                         type="submit"
                         variant="contained"

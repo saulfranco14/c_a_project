@@ -4,7 +4,6 @@ import { useNavigate, Navigate }    from 'react-router-dom';
 import { role_create }              from '../../actions/role_action';
 import { SweetAlertBasic }          from '../../utils/sweet_alert';
 import { WrapperNewRole }           from './roles.styles';
-import { input_data }               from '../../actions/input_action';
 import InputLabel                   from '@mui/material/InputLabel';
 import TextField                    from '@mui/material/TextField';
 import Box                          from '@mui/material/Box';
@@ -12,12 +11,20 @@ import Button                       from '@mui/material/Button';
 import FormGroup                    from '@mui/material/FormGroup';
 import FormControlLabel             from '@mui/material/FormControlLabel';
 import Checkbox                     from '@mui/material/Checkbox';
+import {
+    input_data,
+    remove_check,
+    add_check
+}                                   from '../../actions/input_action';
+
 
 const NewRole = () => {
 
     const navigate                          = useNavigate();
     const dispatch                          = useDispatch();
     const add_input                         = (name_input, value_input) => dispatch( input_data({name_input, value_input}) );
+    const add_data                          = (input) => dispatch( add_check(input) )
+    const remove_data                       = (input) => dispatch( remove_check(input) )
     const create                            = (role)  => dispatch( role_create(role) );
     const {
         name_rol,
@@ -35,6 +42,11 @@ const NewRole = () => {
         await add_input(e.target.name,e.target.value);
     }
 
+    const click_check = async (input) =>{
+        menu_rol.includes(input) ? await remove_data(input) : await add_data(input)
+    }
+
+
     // user, roles, profile
 
     const createRole = e => {
@@ -43,12 +55,11 @@ const NewRole = () => {
         const object_role = {
             name_rol,
             description_rol,
-            url_rol
+            url_rol,
+            menu_rol
         }
 
         const validate_form = Object.values(object_role)
-
-        console.log(validate_form)
 
         if(validate_form.includes(undefined)){
             SweetAlertBasic("error","Ups","Todos los datos son obligatorios");
@@ -109,9 +120,9 @@ const NewRole = () => {
                         className='check-button'
                     >
                         <InputLabel id="role-checl">Selecciona que puede ver el rol:</InputLabel>
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Perfil" />
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Usuario" />
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Roles" />
+                        <FormControlLabel control={<Checkbox   onClick={()=> click_check('profile')} />} label="Perfil" />
+                        <FormControlLabel control={<Checkbox   onClick={()=> click_check('users')} />} label="Usuario" />
+                        <FormControlLabel control={<Checkbox   onClick={()=> click_check('roles')} />} label="Roles" />
                     </FormGroup>
                     <Button
                         type="submit"
