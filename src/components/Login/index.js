@@ -10,7 +10,7 @@ import { useSelector }      from 'react-redux'
 const Index = () => {
 
     const [ newInput, setNewInput ]         = useState(DataLogin)
-    const { name_login, password_login }    = useSelector( state => state?.login || {})
+    const { name_login, password_login }    = useSelector( state => state?.input || {})
 
     const loginUserForm = e => {
         e.preventDefault();

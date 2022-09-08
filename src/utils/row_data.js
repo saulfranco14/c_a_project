@@ -1,5 +1,6 @@
 import Button                       from '@mui/material/Button';
 import Link                         from "@material-ui/core/Link";
+import { SweetAlertConfirm }        from '../utils/sweet_alert';
 
 export const ColumnsUser = [
     { field: 'name_user' ,                      headerName: 'Nombre',                   width: 150 },
@@ -18,7 +19,7 @@ export const ColumnsUser = [
     //         ;
     //     }
     // },
-    { field: 'id_rol',                                  headerName: 'Rol',                      width: 200 },
+    { field: 'id_rol',                                  headerName: 'Rol',                      width: 100 },
     {
         field: "",
         headerName: "Editar",
@@ -40,4 +41,26 @@ export const ColumnsUser = [
                 </Button>;
         }
     },
+    {
+        field: "eliminar",
+        headerName: "Eliminar",
+        sortable: false,
+        width: 100,
+        disableClickEventBubbling: true,
+        renderCell: ( params ) => {
+        return  <Button
+                    variant     ="contained"
+                    color       ="error"
+                    size        ="small"
+                    onClick     = { ()=> deleteUser(params.row, "Quieres eliminar al usuario: ") }
+                >
+                    Eliminar
+                </Button>;
+        }
+    }
+
 ];
+
+const deleteUser = (team, title) =>{
+    SweetAlertConfirm(team,title,"¿Estas Seguro?");
+}

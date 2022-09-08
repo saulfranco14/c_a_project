@@ -1,5 +1,6 @@
 import {
-    INPUT_DATA
+    INPUT_DATA,
+    INPUT_INIT
 } from '../types/input';
 
 const initial_state = {
@@ -10,6 +11,12 @@ const initial_state = {
 
 export default function init ( state = initial_state, action){
     switch( action.type ){
+        case INPUT_INIT:
+            return{
+                data_input:[],
+                loading: false,
+                flag: false
+            }
         case INPUT_DATA:
             return{
                 ...state,
