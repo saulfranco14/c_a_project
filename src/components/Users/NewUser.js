@@ -37,7 +37,8 @@ const NewUser = () => {
         last_name_user,
         email_user,
         password_user,
-        id_rol
+        id_rol,
+        phone_user
 
     }    = useSelector( state => state?.input || {})
 
@@ -56,7 +57,7 @@ const NewUser = () => {
             email_user,
             password_user,
             id_rol,
-            active_user: true
+            phone_user
         }
         const validate_form = Object.values(object_user)
         if(validate_form.includes(undefined)){
