@@ -8,6 +8,9 @@ https://ca-system.netlify.app/
 ### Url de la API REST del Proyecto
 https://api-exam-tic.herokuapp.com/
 
+Instalación del proyecto con npm:
+### `npm install`
+
 En el directorio del proyecto(terminal), debes arrancarlo con:
 ### `npm start`
 
@@ -16,8 +19,6 @@ Open [http://localhost:3000](http://localhost:3000) en tu navegador web.
 
 La página se cargará automaticamente cuando detecte cambios.\
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Dashboard del Proyecto`
+https://wakatime.com/@115d59df-c39a-4da7-bcd3-067007e14119/projects/qfnsxvurwv?start=2022-09-02&end=2022-09-08
 
