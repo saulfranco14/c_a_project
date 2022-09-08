@@ -35,6 +35,8 @@ const NewRole = () => {
         await add_input(e.target.name,e.target.value);
     }
 
+    // user, roles, profile
+
     const createRole = e => {
 
         e.preventDefault();

@@ -26,7 +26,7 @@ export const SweetAlertConfirm = (data,title,textTitle, module) =>{
             module === 'user' ?
                 store.dispatch( user_delete(data.id_user) )
             :
-                store.dispatch( role_delete(data.id_user) )
+                store.dispatch( role_delete(data.id_rol) )
         }
     })
 }

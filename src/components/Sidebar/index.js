@@ -7,15 +7,24 @@ const Index = () => {
     const navigate = useNavigate();
 
     const goSite = (url) =>{
-        navigate(url)
+        navigate(`/${url}`)
     }
+
+    let sidebar_test = ['users','roles'];
 
     return (
         <SideBar>
             <ul>
-                <li onClick={()=>goSite('/profile')}>My perfil</li>
-                <li onClick={()=>goSite('/users')}>Usuarios</li>
-                <li onClick={()=>goSite('/roles')}>Roles</li>
+                {
+                    sidebar_test.map((item, index)=>(
+                        <li
+                            key={index}
+                            onClick={()=>goSite(item)}
+                        >
+                            {item}
+                        </li>
+                    ))
+                }
             </ul>
         </SideBar>
     );
