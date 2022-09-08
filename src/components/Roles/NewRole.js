@@ -5,6 +5,7 @@ import { role_create }              from '../../actions/role_action';
 import { SweetAlertBasic }          from '../../utils/sweet_alert';
 import { WrapperNewRole }           from './roles.styles';
 import { input_data }               from '../../actions/input_action';
+import InputLabel                   from '@mui/material/InputLabel';
 import TextField                    from '@mui/material/TextField';
 import Box                          from '@mui/material/Box';
 import Button                       from '@mui/material/Button';
@@ -19,7 +20,7 @@ const NewRole = () => {
     const add_input                         = (name_input, value_input) => dispatch( input_data({name_input, value_input}) );
     const create                            = (role)  => dispatch( role_create(role) );
     const {
-        name_role,
+        name_rol,
         description_rol,
         url_rol,
         menu_rol
@@ -38,13 +39,14 @@ const NewRole = () => {
 
         e.preventDefault();
         const object_role = {
-            name_role,
+            name_rol,
             description_rol,
-            url_rol,
-            menu_rol
+            url_rol
         }
 
         const validate_form = Object.values(object_role)
+
+        console.log(validate_form)
 
         if(validate_form.includes(undefined)){
             SweetAlertBasic("error","Ups","Todos los datos son obligatorios");
@@ -83,16 +85,6 @@ const NewRole = () => {
                     />
                     <TextField
                         id          ='outlined-basic'
-                        label       ='Ingrese el nombre del rol'
-                        name        ='name_rol'
-                        variant     ='outlined'
-                        className   ='input-form-role'
-                        type        ='text'
-                        autoComplete="off"
-                        onChange    ={ e => onInput(e) }
-                    />
-                    <TextField
-                        id          ='outlined-basic'
                         label       ='Ingrese la descripcion del rol'
                         name        ='description_rol'
                         variant     ='outlined'
@@ -111,7 +103,10 @@ const NewRole = () => {
                         autoComplete="off"
                         onChange    ={ e => onInput(e) }
                     />
-                    <FormGroup>
+                    <FormGroup
+                        className='check-button'
+                    >
+                        <InputLabel id="role-checl">Selecciona que puede ver el rol:</InputLabel>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Perfil" />
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Usuario" />
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Roles" />

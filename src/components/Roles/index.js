@@ -54,7 +54,7 @@ const Index = () => {
                     columns             ={ColumnsRole}
                     pageSize            ={12}
                     rowsPerPageOptions  ={[12]}
-                    getRowId            ={roles => parseInt(roles.id_role)}
+                    getRowId            ={roles => roles.id_rol}
                 />
             </section>
         </WrapperRol>

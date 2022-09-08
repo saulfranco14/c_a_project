@@ -13,7 +13,7 @@ export const  SweetAlertBasic = (icon, title, text) => {
 export const SweetAlertConfirm = (data,title,textTitle, module) =>{
     return Swal.fire({
         title: textTitle,
-        text: title + data.name_user ,
+        text: title ,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

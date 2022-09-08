@@ -52,7 +52,7 @@ export const ColumnsUser = [
                     variant     ="contained"
                     color       ="error"
                     size        ="small"
-                    onClick     = { ()=> deleteUser(params.row, "Quieres eliminar al usuario: ") }
+                    onClick     = { ()=> deleteUser(params.row, "Quieres eliminar al usuario") }
                 >
                     Eliminar
                 </Button>;
@@ -80,7 +80,7 @@ export const ColumnsRole = [
                 >
                     <Link
                         style   ={ {color:"#ffff", textDecoration:"none"} }
-                        href    ={`/role/${params.row.id_role}`}
+                        href    ={`/role/${params.row.id_rol}`}
                     >
                         Editar
                     </Link>
@@ -98,7 +98,7 @@ export const ColumnsRole = [
                     variant     ="contained"
                     color       ="error"
                     size        ="small"
-                    onClick     = { ()=> deleteRole(params.row, "Quieres eliminar el role: ") }
+                    onClick     = { ()=> deleteRole(params.row, "Quieres eliminar el role") }
                 >
                     Eliminar
                 </Button>;
