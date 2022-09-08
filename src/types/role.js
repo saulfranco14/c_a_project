@@ -1,0 +1,14 @@
+export const ROLE_INIT              = 'ROLE_INIT';
+export const ROLE_SUCCESS           = 'ROLE_SUCCESS';
+export const ROLE_ERROR             = 'ROLE_ERROR';
+export const ROLE_LOAD_INIT         = 'ROLE_LOAD_INIT';
+export const ROLE_LOAD_ERROR        = 'ROLE_LOAD_ERROR';
+export const ROLE_LOAD_SUCCESS      = 'ROLE_LOAD_SUCCESS';
+export const ROLE_UPDATE_INIT       = 'ROLE_UPDATE_INIT';
+export const ROLE_UPDATE_ERROR      = 'ROLE_UPDATE_ERROR';
+export const ROLE_UPDATE_SUCCESS    = 'ROLE_UPDATE_SUCCESS';
+export const ROLE_DELETE_INIT       = 'ROLE_DELETE_INIT';
+export const ROLE_DELETE_ERROR      = 'ROLE_DELETE_ERROR';
+export const ROLE_DELETE_SUCCESS    = 'ROLE_DELETE_SUCCESS';
+export const ROLE_ID_SUCCESS        = 'ROLE_ID_SUCCESS';
+export const ROLE_INIT_CHANGE        = 'ROLE_INIT_CHANGE';
