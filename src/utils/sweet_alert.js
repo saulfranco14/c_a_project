@@ -1,6 +1,7 @@
 import Swal                 from 'sweetalert2';
 import store                from '../store/store';
 import  { user_delete }     from '../actions/user_action';
+import  { role_delete }     from '../actions/role_action';
 export const  SweetAlertBasic = (icon, title, text) => {
     return Swal.fire({
         icon: icon,
@@ -9,10 +10,10 @@ export const  SweetAlertBasic = (icon, title, text) => {
     })
 }
 
-export const SweetAlertConfirm = (data,title,textTitle) =>{
+export const SweetAlertConfirm = (data,title,textTitle, module) =>{
     return Swal.fire({
         title: textTitle,
-        text: title + data.name_user ,
+        text: title ,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -22,7 +23,10 @@ export const SweetAlertConfirm = (data,title,textTitle) =>{
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            store.dispatch( user_delete(data.id_user) );
+            module === 'user' ?
+                store.dispatch( user_delete(data.id_user) )
+            :
+                store.dispatch( role_delete(data.id_rol) )
         }
     })
 }

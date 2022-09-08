@@ -8,4 +8,17 @@ export const SideBar = styled.div`
     color: var(--white_primary);
     font-size: 18px;
     width: 180px;
+    ul{
+        li{
+            margin:10px 10px 20px 10px;
+            list-style: none;
+            text-transform:capitalize;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        li:hover{
+            border-bottom: 3px solid var(--white_primary);
+            width:50px;
+        }
+    }
 `
