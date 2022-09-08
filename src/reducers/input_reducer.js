@@ -26,20 +26,20 @@ export default function init ( state = initial_state, action){
                 loading: false,
                 flag: false,
                 error: false,
-                menu_rol: [...state.menu_rol],
+                menu_rol: [action.menu_rol],
                 [action.name_input]: action.value_input,
             }
         case ADD_CHECK:
             return{
                 ...state,
                 loading: false,
-                menu_rol: [...state.menu_rol,action.payload],
+                menu_rol: [...state?.menu_rol,action.payload],
             }
         case REMOVE_CHECK:
             return{
                 ...state,
                 loading: false,
-                menu_rol: state.menu_rol.filter(item => item !== action.payload),
+                menu_rol: state?.menu_rol.filter(item => item !== action.payload),
             }
         default:
             return state;
