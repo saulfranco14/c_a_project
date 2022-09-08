@@ -14,6 +14,10 @@ import Login          from './components/Login';
 // Sidebar
 import SideBar        from 'components/Sidebar';
 
+// ROUT PRIVATE
+import RouterUsers              from './components/Routes/RouteUser';
+import RouterRole               from './components/Routes/RouteRole';
+
 // User
 import User           from './components/Users';
 import NewUser        from './components/Users/NewUser';
@@ -33,13 +37,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Login/>} />
 
-          <Route path='/users'          element={<User/>} />
-          <Route path='/new_user'       element={<NewUser/>} />
-          <Route path='/user/:id_user'  element={<EditUser/>} />
+          <Route          element={<RouterUsers/> }>
+            <Route path='/users'          element={<User/>} />
+            <Route path='/new_user'       element={<NewUser/>} />
+            <Route path='/user/:id_user'  element={<EditUser/>} />
+          </Route>
 
-          <Route path='/roles'          element={<Role/>} />
-          <Route path='/new_role'       element={<NewRole/>} />
-          <Route path='/role/:id_role'  element={<EditRole/>} />
+          <Route          element={<RouterRole/> }>
+            <Route path='/roles'          element={<Role/>} />
+            <Route path='/new_role'       element={<NewRole/>} />
+            <Route path='/role/:id_role'  element={<EditRole/>} />
+          </Route>
 
         </Routes>
       </Provider>

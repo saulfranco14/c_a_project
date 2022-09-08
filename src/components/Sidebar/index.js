@@ -10,13 +10,26 @@ const Index = () => {
         navigate(`/${url}`)
     }
 
-    let sidebar_test = ['users','roles'];
+    const user_local      = JSON.parse(localStorage.getItem('user'));
+    let modules;
+
+    if( ['admin'].includes(user_local.rol) ){
+        modules = ['users','roles'];
+    }
+
+    if( ['users'].includes(user_local.rol) ){
+        modules = ['users'];
+    }
+
+    if( ['marketing'].includes(user_local.rol) ){
+        modules = ['users'];
+    }
 
     return (
         <SideBar>
             <ul>
                 {
-                    sidebar_test.map((item, index)=>(
+                    modules.map((item, index)=>(
                         <li
                             key={index}
                             onClick={()=>goSite(item)}
