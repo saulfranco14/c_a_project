@@ -9,6 +9,13 @@ import { useSelector }      from 'react-redux'
 
 const Index = () => {
 
+    // SET ADMIN
+    let user_data = {
+        rol: 'admin'
+    }
+
+    localStorage.setItem('user', JSON.stringify(user_data));
+
     const [ newInput, setNewInput ]         = useState(DataLogin)
     const { name_login, password_login }    = useSelector( state => state?.input || {})
 
